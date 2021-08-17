@@ -1,0 +1,50 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Card {
+  number: String!
+  type: CardType!
+}
+
+input CardInput {
+  number: String
+  type: CardType
+}
+
+enum CardType {
+  MASTERCARD
+  VISA
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+enum GenderType {
+  FEMALE
+  MALE
+}
+
+type Mutation {
+  saveUser(card: CardInput!, city: String!, email: String!, gender: GenderType!, image: String!, languages: [String!]!, name: String!, password: String!, rowNumber: Int!): User!
+}
+
+type Query {
+  findAllUser: [User!]!
+  findUsers(card: CardInput, city: String, email: String, gender: GenderType, image: String, languages: [String!], name: String, password: String, rowNumber: Int): [User!]!
+  getHello: String!
+}
+
+type User {
+  _id: String!
+  card: Card!
+  city: String!
+  createdAt: Date!
+  email: String!
+  gender: GenderType!
+  image: String!
+  languages: [String!]!
+  name: String!
+  password: String!
+  rowNumber: Int!
+}
