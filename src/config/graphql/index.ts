@@ -18,7 +18,7 @@ export class GraphqlService implements GqlOptionsFactory {
     buildSchemaOptions: {
       numberScalarMode: 'integer',
     },
-    formatError({ extensions, ...error }) {
+    formatError: ({ extensions, ...error }) => {
       const { code, response } = extensions ?? {};
       if (!response) return { ...error, code };
 
