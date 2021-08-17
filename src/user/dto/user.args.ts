@@ -17,5 +17,4 @@ export class UserArgs {
   image: string;
   card: CardInput;
   languages: string[];
-  rowNumber: number;
 }
