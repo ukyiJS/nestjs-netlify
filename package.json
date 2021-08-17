@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build ",
     "prebuild:netlify": "rimraf dist",
-    "build:netlify": "nest build --webpack --webpackPath webpack-functions.config.js ",
+    "build:netlify": "nest build --webpack --webpackPath webpack.functions.config.js ",
     "start": "cross-env NODE_ENV=development nest start",
     "dev": "cross-env NODE_ENV=development nest start --watch",
     "debug": "nest start --debug --watch",
