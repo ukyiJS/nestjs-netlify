@@ -13,7 +13,8 @@ class Card {
 @Entity()
 @ObjectType()
 export class User {
-  @Exclude() @ObjectIdColumn({ type: 'uuid' })
+  @Exclude()
+  @ObjectIdColumn({ type: 'uuid' })
   _id: string;
   @Column()
   name: string;
@@ -31,16 +32,15 @@ export class User {
   card: Card;
   @Column()
   languages: string[];
+  @Exclude()
   @Column()
-  rowNumber: number;
-  @Exclude() @Column()
   createdAt: Date;
 
   constructor(user: Partial<User>) {
-    if (user?.rowNumber) return;
+    if (user?.name) return;
 
     Object.assign(this, plainToClass(User, user));
-    this._id = this._id ?? v4();
-    this.createdAt = this.createdAt ?? new Date();
+    this._id ??= v4();
+    this.createdAt ??= new Date();
   }
 }
