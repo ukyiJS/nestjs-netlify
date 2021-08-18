@@ -16,6 +16,6 @@ export class UserService {
   }
 
   saveUser(user: UserArgs): Promise<User> {
-    return this.userRepository.save(user);
+    return this.userRepository.save(new User(user));
   }
 }
