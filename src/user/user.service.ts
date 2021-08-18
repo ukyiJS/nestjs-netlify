@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
-import { User } from '@/user/entities/user.entity';
-import { query } from '@/utils/database';
-import { CreateUserArgs } from '@/user/dto/create-user.args';
-import { FindUserArgs } from '@/user/dto/find-user.args';
+import { query } from '@/utils';
+import { FindUserArgs } from './dto/find-user.args';
+import { UserArgs } from './dto/user.args';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UserService {
@@ -15,7 +15,7 @@ export class UserService {
     return this.userRepository.find({ where: query(user) });
   }
 
-  saveUser(user: CreateUserArgs): Promise<User> {
-    return this.userRepository.save(new User(user as User));
+  saveUser(user: UserArgs): Promise<User> {
+    return this.userRepository.save(user);
   }
 }
