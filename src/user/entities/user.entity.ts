@@ -9,7 +9,7 @@ import { Card } from './card.entity';
 @Entity()
 @ObjectType()
 export class User {
-  @ObjectIdColumn('uuid')
+  @ObjectIdColumn({ type: 'uuid' })
   _id?: string;
 
   @Column()
@@ -23,7 +23,7 @@ export class User {
   @IsEnum(GenderType, { message: '잘못된 성별입니다.' })
   gender: GenderType;
 
-  @Column({ unique: true })
+  @Column()
   email: string;
 
   @Column()
