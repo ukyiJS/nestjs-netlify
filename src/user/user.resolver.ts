@@ -1,10 +1,10 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { User } from 'src/user/entities/user.entity';
 import { Inject } from '@nestjs/common';
-import { UserService } from '@/user/user.service';
-import { BaseResolver } from '@/utils/graphql';
-import { CreateUserArgs } from '@/user/dto/create-user.args';
-import { FindUserArgs } from '@/user/dto/find-user.args';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { BaseResolver } from '@/utils';
+import { FindUserArgs } from './dto/find-user.args';
+import { UserArgs } from './dto/user.args';
+import { User } from './entities/user.entity';
+import { UserService } from './user.service';
 
 @Resolver(() => User)
 export class UserResolver extends BaseResolver(User) {
@@ -17,7 +17,7 @@ export class UserResolver extends BaseResolver(User) {
   }
 
   @Mutation(() => User)
-  saveUser(@Args() user: CreateUserArgs): Promise<User> {
+  saveUser(@Args() user: UserArgs): Promise<User> {
     return this.userService.saveUser(user);
   }
 }
