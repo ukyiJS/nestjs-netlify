@@ -3,7 +3,7 @@ import { plainToClass } from 'class-transformer';
 import { IsEnum, IsUrl, Length } from 'class-validator';
 import { BeforeInsert, Column, Entity, ObjectIdColumn } from 'typeorm';
 import { v4 } from 'uuid';
-import { Hash } from '@/utils';
+import { convertLocalDateToUTCDate, Hash } from '@/utils';
 import { GenderType } from '../user.interface';
 import { Card } from './card.entity';
 
@@ -53,6 +53,6 @@ export class User {
 
     Object.assign(this, plainToClass(User, user));
     this._id ??= v4();
-    this.createdAt ??= new Date();
+    this.createdAt ??= convertLocalDateToUTCDate(new Date());
   }
 }
