@@ -1,8 +1,8 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { getEnv } from './utils';
 import { AppModule } from '@/app.module';
-import { ValidationOptions } from '@/config';
+import { ValidationOptions } from './config';
+import { getEnv } from './utils';
 
 (async () => {
   const app = await NestFactory.create(AppModule, { cors: true });

@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { GqlModuleOptions, GqlOptionsFactory } from '@nestjs/graphql';
 import { join } from 'path';
-import { Env, ObjectLiteral } from '@/types';
 import { getEnv } from '@/utils';
+import { Env, ObjectLiteral } from '@/types';
 
 @Injectable()
 export class GraphqlService implements GqlOptionsFactory {
